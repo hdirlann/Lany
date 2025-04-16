@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LANY - a beautiful blur</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .rotate-album {
+      animation: spin 4s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .song-list {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+    }
+    .song-list.expanded {
+      max-height: 1000px;
+      transition: max-height 0.8s ease-in;
+    }
+    .album-cover-container {
+        background-image: url('assets/img/song.png');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+      .album-cover-overlay {
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        padding: 2rem;
+        text-align: center;
+      }
+      .play-pause-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .album-cover:hover .play-pause-btn {
+        opacity: 1;
+      }
+  </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-4xl mx-auto bg-gray-800 rounded-xl shadow-2xl overflow-hidden">
+        <div class="flex flex-col md:flex-row">
+          <!-- Left: Full Image Album Cover (Clickable) -->
+          <div class="w-full md:w-1/2 album-cover-container cursor-pointer min-h-64 md:min-h-[400px]" id="albumCoverContainer">
+            <div class="album-cover-overlay">
+              <div class="relative">
+                <img id="albumCover" src="assets/img/song.png" alt="Album Cover" 
+                     class="w-48 h-48 rounded-full mb-4 transition-transform duration-300 mx-auto album-cover" />
+                <button id="playPauseBtn" class="play-pause-btn">
+                  <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <svg id="pauseIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-900 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </button>
+              </div>
+              <p class="text-gray-400 text-sm">Click to view tracks</p>
+            </div>
+          </div>
+      <!-- Right: Music Services -->
+      <div class="w-full md:w-1/2 bg-gray-700 p-8 flex flex-col justify-center">
+        <h1 class="text-2xl font-bold mb-2">LANY</h1>
+        <p class="text-gray-300 mb-6">"a beautiful blur"</p>
+        <p class="text-lg font-semibold mb-6 ">Choose your preferred music service</p>
+        <div class="mt-4 space-y-4">
+            <a href="shop.html" class="w-full inline-block bg-white text-black font-semibold py-2 px-4 rounded-lg flex items-center justify-center space-x-2 hover:bg-gray-300 transition">
+              <img src="./assets/img/buy.png" alt="Buy Icon" class="w-5 h-5" />
+              <span>Buy</span>
+            </a>
+            <a href="spotify:artist:49tQo2QULno7gxHutgccqF" class="w-full inline-block bg-green-500 text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center space-x-2 hover:bg-green-600 transition">
+              <img src="./assets/img/spotify.png" alt="Spotify Icon" class="w-5 h-5" />
+              <span>Play</span>
+            </a>
+            <a href="https://music.apple.com/us/artist/lany/867853783" class="w-full inline-block bg-red-500 text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center space-x-2 hover:bg-red-600 transition">
+              <img src="./assets/img/play.png" alt="Apple Music Icon" class="w-5 h-5" />
+              <span>Play</span>
+            </a>
+            <a href="https://music.apple.com/us/artist/lany/867853783" class="w-full inline-block bg-purple-500 text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center space-x-2 hover:bg-purple-600 transition">
+              <img src="./assets/img/download.png" alt="Download Icon" class="w-5 h-5" />
+              <span>Download</span>
+            </a>
+          </div>
+      </div>
+    </div>
+    
+    <!-- Song List (Hidden by default) -->
+    <div class="song-list bg-gray-900" id="songListContainer">
+      <div class="p-6">
+        <ul id="songList" class="divide-y divide-gray-700">
+          <!-- Songs will be added by JS -->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <audio id="audioPlayer" hidden></audio>
+
+  <script>
+    const songs = [
+      { title: "XXL", duration: "3:22", file: "LANY - XXL (Official Music Video).mp3" },
+      { title: "Out Of My League", duration: "3:27", file: "LANY - Out Of My League (Official Lyric Video).mp3" },
+      { title: "Sugar & Cinnamon", duration: "3:37", file: "LANY - Sugar & Cinnamon (Official Lyric Video).mp3" },
+      { title: "I Pray", duration: "3:03", file: "LANY - I Pray.mp3" },
+      { title: "Home Is Where The Hurt Is", duration: "4:01", file: "LANY - Home Is Where The Hurt Is (Official Music Video).mp3" },
+      { title: "It Even Rains in LA", duration: "3:36", file: "LANY - It Even Rains In LA (Official Lyric Video).mp3" },
+      { title: "Heartbreak Can Wait", duration: "3:22", file: "LANY - Heartbreak Can Wait (Official Lyric Video).mp3" },
+      { title: "(Saturday Night) 3:22 A.M.", duration: "4:23", file: "LANY - (Saturday Night) 3_22 A.M. (Official Lyric Video).mp3" },
+      { title: "Love at First Fight", duration: "5:36", file: "LANY - Love At First Fight (Official Music Video).mp3" }
+    ];
+
+    const songList = document.getElementById("songList");
+    const audioPlayer = document.getElementById("audioPlayer");
+    const albumCover = document.getElementById("albumCover");
+    const albumCoverContainer = document.getElementById("albumCoverContainer");
+    const songListContainer = document.getElementById("songListContainer");
+    const playPauseBtn = document.getElementById("playPauseBtn");
+    const playIcon = document.getElementById("playIcon");
+    const pauseIcon = document.getElementById("pauseIcon");
+
+    // Current playing song index
+    let currentSongIndex = 0;
+    let isPlaying = false;
+
+    // Populate song list
+    songs.forEach((song, index) => {
+      const li = document.createElement("li");
+      li.className = "py-3 px-4 hover:bg-gray-800 cursor-pointer flex justify-between items-center";
+      li.innerHTML = `<span>${song.title}</span><span class='text-sm text-gray-400'>${song.duration}</span>`;
+      li.addEventListener("click", (e) => {
+        e.stopPropagation();
+        currentSongIndex = index;
+        playSong(song.file);
+      });
+      songList.appendChild(li);
+    });
+
+    // Play a song
+    function playSong(file) {
+      audioPlayer.src = `./assets/song/${file}`;
+      audioPlayer.play();
+      albumCover.classList.add("rotate-album");
+      isPlaying = true;
+      updatePlayPauseIcon();
+    }
+
+    // Toggle play/pause
+    function togglePlayPause() {
+      if (audioPlayer.src) {
+        if (isPlaying) {
+          audioPlayer.pause();
+        } else {
+          audioPlayer.play();
+        }
+        isPlaying = !isPlaying;
+        updatePlayPauseIcon();
+      } else if (songs.length > 0) {
+        // If no song is selected, play the first one
+        currentSongIndex = 0;
+        playSong(songs[0].file);
+      }
+    }
+
+    // Update play/pause icon
+    function updatePlayPauseIcon() {
+      if (isPlaying) {
+        playIcon.classList.add("hidden");
+        pauseIcon.classList.remove("hidden");
+      } else {
+        playIcon.classList.remove("hidden");
+        pauseIcon.classList.add("hidden");
+      }
+    }
+
+    // Toggle song list visibility
+    albumCoverContainer.addEventListener("click", (e) => {
+      // Only toggle if click is not on the play/pause button
+      if (!e.target.closest('#playPauseBtn')) {
+        songListContainer.classList.toggle("expanded");
+      }
+    });
+
+    // Play/pause button click
+    playPauseBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      togglePlayPause();
+    });
+
+    // Audio player events
+    audioPlayer.addEventListener("pause", () => {
+      albumCover.classList.remove("rotate-album");
+      isPlaying = false;
+      updatePlayPauseIcon();
+    });
+
+    audioPlayer.addEventListener("play", () => {
+      albumCover.classList.add("rotate-album");
+      isPlaying = true;
+      updatePlayPauseIcon();
+    });
+
+    // When song ends, play next one
+    audioPlayer.addEventListener("ended", () => {
+      currentSongIndex = (currentSongIndex + 1) % songs.length;
+      playSong(songs[currentSongIndex].file);
+    });
+  </script>
+</body>
+</html>

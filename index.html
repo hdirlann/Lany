@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LANY Page with Fixed Background</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-cream">
+    <!-- Hero Section with Fixed Background -->
+    <div class="hero-section h-screen bg-cover bg-center bg-fixed flex flex-col items-center justify-center relative">
+        <!-- Navbar -->
+        <nav class="transparent-nav w-full py-4 flex justify-center space-x-4 absolute top-0">
+            <a href="song.html" class="nav-btn px-6 py-2 text-white font-semibold rounded-full hover:bg-gray-200 transition">LISTEN</a>
+        <a href="https://www.youtube.com/@thisisLANY" class="nav-btn px-6 py-2 text-white font-semibold rounded-full hover:bg-gray-200 transition">WATCH</a>
+        <a href="#" class="nav-btn px-6 py-2 text-white font-semibold rounded-full hover:bg-gray-200 transition">SHOP</a>
+        <a href="#" class="nav-btn px-6 py-2 text-white font-semibold rounded-full hover:bg-gray-200 transition">TOUR</a>
+        </nav>
+
+        <section class="py-12 md:py-24 px-4 md:px-8 max-w-7xl mx-auto flex flex-col items-center gap-8">
+            <!-- Teks di atas -->
+            <div class="w-full text-center  ">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight">
+                    Next Tour
+                </h2>
+                <p class="text-lg md:text-xl text-white opacity-90 mb-4 font-light">
+                    May 30, 2025<br>Seoul Jazz Festival
+                </p>
+                <p class="text-base md:text-lg text-white font-medium">
+                    Seoul
+                </p>
+            </div>
+            <!-- Video di tengah -->
+            <div class="w-full lg:w-3/4 aspect-video bg-gray-200 rounded-lg overflow-hidden mx-auto">
+                <video width="100%" height="100%" controls autoplay muted loop class="w-full h-full object-cover">
+                    <source src="assets/vid/videoplayback.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+          
+        <!-- Social Icons -->
+        <div class="absolute bottom-4 left-1/4 flex space-x-4">
+         
+        </div>
+    </div>
+
+    <!-- Content Section with Solid Background -->
+    <div class="container">
+        <div class="text-section">
+          <h1>LANY New Album Highlights</h1>
+         
+          <div class="song-list">
+            <a href="https://www.youtube.com/watch?v=g5xxhaKm1RQ" target="_blank">1. Malibu Nights</a>
+            <a href="https://www.youtube.com/watch?v=VIDEO_ID2" target="_blank">2. ILYSB</a>
+            <a href="https://www.youtube.com/watch?v=VIDEO_ID3" target="_blank">3. Thru These Tears</a>
+          </div>
+        </div>
+        <div class="image-section">
+          <div class="image-box back">
+            <img src="assets/img/lagu3.png" alt="Album Background 3">
+          </div>
+          <div class="image-box middle">
+            <img src="assets/img/lagu2.png" alt="Album Background 2">
+          </div>
+          <div class="image-box front">
+            <img src="assets/img/lagu1.png" alt="Album Cover 1">
+          </div>
+        </div>
+      </div>
+          
+      </div>
+
+      <section class="bg-white py-12 md:py-20 px-4 md:px-8">
+        <!-- Judul SHOP -->
+        <h2 class="text-3xl font-bold text-center mb-12">SHOP</h2>
+      
+        <!-- Produk Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          <!-- Produk 1 -->
+          <div class="flex flex-col items-center">
+            <img src="assets/img/vinyl.png" alt="Vinyl" class="w-full max-w-xs">
+            <p class="text-center font-bold mt-4">"A BEAUTIFUL BLUR" VINYL</p>
+            <p class="text-center text-gray-600">$31.99</p>
+          </div>
+      
+          <!-- Produk 2 -->
+          <div class="flex flex-col items-center">
+            <img src="assets/img/sweater.png" alt="Sweater" class="w-full max-w-xs">
+            <p class="text-center font-bold mt-4">XXL CREWNECK</p>
+            <p class="text-center text-gray-600">$60.00</p>
+          </div>
+        </div>
+      
+        <!-- Tombol Lihat Selengkapnya -->
+        <div class="text-center mt-12">
+          <a href="shop.html" class="text-blue-600 font-semibold hover:underline">Lihat Selengkapnya</a>
+        </div>
+      </section>
+
+      <!-- NEXT TOUR Section -->
+<section class=" py-16 px-6 md:px-12">
+    <h2 class="text-4xl font-bold text-center mb-12 tracking-tight">TOUR</h2>
+  
+    <div class="max-w-5xl mx-auto space-y-6">
+      <!-- Event 1 -->
+      <div class="flex flex-col md:flex-row items-center justify-between border-b pb-4">
+        <div class="text-center md:text-left">
+          <p class="font-bold text-lg">MAY 30, 2025</p>
+          <p class="text-gray-700">Seoul Jazz Festival</p>
+        </div>
+        <div class="text-center md:text-right mt-2 md:mt-0">
+          <p class="text-gray-800 font-medium">Seoul</p>
+        </div>
+        <div class="flex gap-2 mt-4 md:mt-0">
+          <a href="#" class="bg-black text-white px-4 py-2 text-sm font-semibold rounded hover:bg-gray-800 transition">TICKETS</a>
+        </div>
+      </div>
+  
+      <!-- Event 2 -->
+      <div class="flex flex-col md:flex-row items-center justify-between border-b pb-4">
+        <div class="text-center md:text-left">
+          <p class="font-bold text-lg">JUN 1, 2025</p>
+          <p class="text-gray-700">Kaohsiung Music Center</p>
+        </div>
+        <div class="text-center md:text-right mt-2 md:mt-0">
+          <p class="text-gray-800 font-medium">Kaohsiung</p>
+        </div>
+        <div class="flex gap-2 mt-4 md:mt-0">
+          <a href="#" class="bg-black text-white px-4 py-2 text-sm font-semibold rounded hover:bg-gray-800 transition">VIP</a>
+          <a href="#" class="bg-black text-white px-4 py-2 text-sm font-semibold rounded hover:bg-gray-800 transition">TICKETS</a>
+        </div>
+      </div>
+  
+      <!-- Event 3 -->
+      <div class="flex flex-col md:flex-row items-center justify-between border-b pb-4">
+        <div class="text-center md:text-left">
+          <p class="font-bold text-lg">AUG 23, 2025</p>
+          <p class="text-gray-700">LaLaLa Fest</p>
+        </div>
+        <div class="text-center md:text-right mt-2 md:mt-0">
+          <p class="text-gray-800 font-medium">Jakarta</p>
+        </div>
+        <div class="flex gap-2 mt-4 md:mt-0">
+          <a href="#" class="bg-black text-white px-4 py-2 text-sm font-semibold rounded hover:bg-gray-800 transition">TICKETS</a>
+        </div>
+      </div>
+    </div>
+  
+    <!-- CTA Button -->
+    <div class="text-center mt-12">
+      <p class="font-semibold mb-4">Get notified when new events are announced in your area</p>
+      <a href="#" class="bg-black text-white px-6 py-3 font-semibold rounded hover:bg-gray-800 transition">FOLLOW LANY</a>
+    </div>
+  </section>
+  
+  <section class="min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('assets/img/login.png');">
+    <form class="bg-black/50 backdrop-blur-sm p-8 rounded-2xl w-full max-w-md space-y-5">
+      <input
+        type="email"
+        placeholder="EMAIL *"
+        required
+        class="w-full px-4 py-3 bg-transparent text-white placeholder-white border border-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
+      />
+      <select
+        required
+        class="w-full px-4 py-3 bg-transparent text-white border border-white rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-white"
+      >
+        <option value="" disabled selected>COUNTRY *</option>
+        <option value="indonesia">Indonesia</option>
+        <option value="usa">USA</option>
+        <option value="uk">UK</option>
+        <!-- Tambah negara lainnya di sini -->
+      </select>
+      <button
+        type="submit"
+        class="w-full px-4 py-3 border border-white text-white rounded-full font-semibold hover:bg-white hover:text-black transition duration-200"
+      >
+        SIGN UP
+      </button>
+    </form>
+  </section>
+  
+  
+  <footer class="bg-black w-full">
+    <!-- Background image full width dengan gradien overlay -->
+    <div class="relative w-full h-[250px] overflow-hidden">
+      <!-- Gambar background -->
+      <img src="/assets/img/footer.png" alt="Footer"
+           class="w-full h-full object-cover object-center opacity-60">
+  
+      <!-- Overlay gradien -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-80"></div>
+    </div>
+  
+    <!-- Bottom footer content -->
+    <div class="flex flex-col sm:flex-row justify-between items-center text-xs text-white font-sans px-4 py-3">
+      <!-- Left -->
+      <div class="mb-2 sm:mb-0">© LANY 2023</div>
+  
+      <!-- Center -->
+      <div class="flex items-center gap-2">
+        <a href="#" class="underline hover:opacity-80 transition">COOKIES</a>
+        <span class="text-sm">★</span>
+        <a href="#" class="underline hover:opacity-80 transition">TERMS</a>
+      </div>
+  
+      <!-- Right -->
+      <div class="mt-2 sm:mt-0">
+        WEBSITE: yah ada hamam bete gw jing
+      </div>
+    </div>
+  </footer>
+  
+      
+
+</body>
+</html>
